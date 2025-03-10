@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useScroll } from "motion/react";
 
 function Work() {
-  const images = [
+  const [images, setimages] = useState([
     {
       image:
         "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/634ef09178195ce0073e38f3_Refokus%20Tools-1.png",
@@ -44,7 +45,13 @@ function Work() {
       left: "55%",
       isactive: false,
     },
-  ];
+  ]);
+
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log("Page scroll: ", latest);
+  });
+
   return (
     <div className="w-full mt-20 ">
       <div className="relative max-w-screen-xl mx-auto  leading-none tracking-tight text-center ">
